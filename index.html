@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siddharth's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(to right, #f8f9fa, #e3f2fd);
+            --text-color: #000;
+            --section-bg: #fff;
+            --link-color: #3f51b5;
+            --hover-link-color: #1a237e;
+            --header-bg: #3f51b5;
+            --nav-bg: #303f9f;
+            --footer-bg: #3f51b5;
+        }
+
+        .dark-mode {
+            --bg-gradient: linear-gradient(to right, #0a0a0a, #121212);
+            /* nearly black */
+            --text-color: #f0f0f0;
+            /* bright text */
+            --section-bg: #1e1e1e;
+            /* dark but still distinct from bg */
+            --link-color: #64b5f6;
+            /* lighter blue for contrast */
+            --hover-link-color: #ffcc80;
+            /* peachy orange highlight on hover */
+            --header-bg: #212121;
+            /* very dark gray */
+            --nav-bg: #333;
+            /* darker navbar */
+            --footer-bg: #1a1a1a;
+        }
+
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            animation: fadeInBody 1s ease-in forwards;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            grid-column: 1 / -1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInHeader 1s ease-in forwards;
+        }
+
+        nav {
+            background-color: var(--nav-bg);
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .navbar li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar li a:hover {
+            color: #c5cae9;
+        }
+
+        #theme-toggle {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        #theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            padding: 1.5rem;
+            margin: 0 1rem;
+            background: var(--section-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s;
+            animation: fadeInSection 1s ease-in forwards;
+
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--link-color);
+            animation: fadeInTitle 1s ease-in;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: var(--hover-link-color);
+        }
+
+        figcaption {
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animations (unchanged) */
+        @keyframes fadeInBody {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInHeader {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInTitle {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInFigure {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInList {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .sessional-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .sessional-container figure {
+            flex: 1 1 300px;
+            max-width: 100%;
+        }
+
+        .video-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .video-row figure {
+            flex: 1 1 45%;
+        }
+
+        figure {
+            margin: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInFigure 1s ease-in;
+        }
+
+        video {
+            width: 100%;
+            max-width: 500px;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        video:hover {
+            transform: scale(1.03);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            animation: fadeInList 1s ease-in;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .video-row {
+                flex-direction: column;
+            }
+
+            section {
+                margin: 0 0.5rem;
+                padding: 1rem;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            h2 {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Siddharth's Academic Portfolio (PESE Lab)</h1>
+    </header>
+
+    <nav>
+        <ul class="navbar">
+            <li><a href="#basic-info">Basic Info</a></li>
+            <li><a href="#assignments">Assignments</a></li>
+            <li><a href="#briefings">Briefings</a></li>
+            <li><a href="PDFs\Resume - Siddharth Pokhriyal.pdf" target="_blank">📄 Resume</a></li>
+            <li><a href="https://www.linkedin.com/in/siddharthpokhriyal" target="_blank">🔗 LinkedIn</a></li>
+            <li><button id="theme-toggle">Toggle Dark Mode</button></li>
+        </ul>
+    </nav>
+
+    <section id="basic-info">
+        <h2>Basic Information</h2>
+        <p><strong>Name:</strong> Siddharth Pokhriyal</p>
+        <p><strong>Section:</strong> C1</p>
+        <p><strong>Class Roll Number:</strong> 64</p>
+        <p><strong>University Roll Number:</strong> 2219716</p>
+        <p><strong>Student ID:</strong> 220211083</p>
+        <p><strong>Course:</strong> BTech in Computer Science & Engineering</p>
+        <p><strong>Batch:</strong> 2022-2026</p>
+        <p><strong>Semester:</strong> 6</p>
+        <p><strong>Subject:</strong> Practical for Employablity Skill Enhancement (PESE) Lab</p>
+        <p><strong>Faculty Name:</strong> Dr. Anubha Pundir</p>
+        <p><strong>Class Notes:</strong> <a href="PDFs\PESE Notebook.pdf" target="_blank">PESE Lab - Class Notes
+                PDF</a></p>
+    </section>
+
+    <section id="assignments">
+        <h2>Video Assignments</h2>
+        <div class="video-row">
+            <figure>
+                <video controls src="videos\WhatsApp Video 2025-06-13 at 19.54.25_68fc7614.mp4"></video>
+                <figcaption>My Introduction</figcaption>
+            </figure>
+            <figure>
+                <video controls src="videos\INTERVIEW-20250613_220535-Meeting Recording.mp4"></video>
+                <figcaption>Interview Questions</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="briefings">
+        <h2>Video Briefings of all PESE Lab Sessions</h2>
+        <div id="sessional-list" class="sessional-container"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Siddharth Pokhriyal | BTech CSE | Graphic Era Hill University, Dehradun</p>
+        <p>Designed with ❤️ for PESE Lab</p>
+    </footer>
+
+    <script>
+        const sessionalList = document.getElementById('sessional-list');
+        for (let i = 1; i <= 14; i++) {
+            const figure = document.createElement('figure');
+            const video = document.createElement('video');
+            video.controls = true;
+            video.src = `videos/${i}.mp4`;
+            const caption = document.createElement('figcaption');
+            caption.innerHTML = `<b>PESE Lab</b><br><i>Session ${i}</i>`;
+            figure.appendChild(video);
+            figure.appendChild(caption);
+            sessionalList.appendChild(figure);
+        }
+
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            toggleButton.textContent = body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Toggle Dark Mode';
+        });
+
+    </script>
+</body>
+
+</html>
